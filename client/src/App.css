@@ -22,6 +22,16 @@ body {
 
 }
 
+.job:hover {
+  cursor: pointer;
+  color: #666666;
+}
+
+.detail-logo {
+  height: 30px;
+  float: right;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
