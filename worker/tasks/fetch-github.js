@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 var fetch = require('node-fetch');
 
 var redis = require("redis"),
@@ -25,16 +27,30 @@ const fetchGithub = async() => {
         onPage++;
     }
 
+    console.log(`got ${allJobs.length} jobs in total`);
     //filter algo
-    const jrJobs = allJobs.filter(jobs => {
-        console.log('hello')
+    const jrJobs = allJobs.filter(job => {
+      const jobTitle = job.title.toLowerCase();
+
+      //algo logic
+      if(
+        jobTitle.includes('senior') ||
+        jobTitle.includes('manager') ||
+        jobTitle.includes('sr.') ||
+        jobTitle.includes('architect')
+      
+      ){
+        return false;
+      }
+      return true;
+
     });
 
+    console.log(`filtered down to ${jrJobs.length}`)
     //set in redis
-    console.log(`got ${allJobs.length} jobs in total`)
-    const success = await setAsync('github', JSON.stringify(allJobs));
+    const success = await setAsync('github', JSON.stringify(jrJobs));
 
-    console.log({success})
+    console.log({success});
 
 }
 

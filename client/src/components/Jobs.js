@@ -4,12 +4,14 @@ import Typography from '@material-ui/core/Typography';
 import Job from './Job';
 
 const Jobs = ({ jobs }) => {
+
+    console.log('job is', jobs[0])
     return (
     <div className="jobs">
-      <Typography variant="h1">
+      <Typography variant="h4" component="h1">
         Entry Level Software Jobs
       </Typography>
-      { jobs.map(job => <Job job={job} key={job.id}/>) }
+      { jobs.map(job => <Job job={job}/>) }
 
 
     </div>
