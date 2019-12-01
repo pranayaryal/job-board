@@ -11,6 +11,7 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 
 const Jobs = ({ jobs }) => {
+    console.log(jobs[0]);
 
     const numJobs = jobs.length;
     const numPages = Math.ceil(numJobs / 50);
